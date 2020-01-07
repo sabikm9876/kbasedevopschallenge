@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Give mysql container time to start up.
+sleep 10
+
+cd /go/Go-Signup-Login-Example-MySQL/
+go run signup.go
