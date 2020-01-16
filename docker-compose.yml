@@ -4,16 +4,25 @@ services:
   mysqld:
     image: kbase/techchallenge
     command: 
-      - "/usr/bin/mysqld_safe"
+       - "/usr/bin/mysqld_safe"
   helloworld:
     image: kbase/techchallenge
     command:
 #      - "sleep"
 #      - 3600
-      - "/go/Go-Signup-Login-Example-MySQL/signup.start"
+	   - "/go/Go-Signup-Login-Example-MySQL/signup.start"
   nginx:
     image: nginx
     ports:
-      - "80:80"
+       - "80:80"
     volumes:
-      - "./nginx/conf.d:/etc/nginx/conf.d"
+       - "./nginx/conf.d:/etc/nginx/conf.d"
+	logging:
+        driver: syslog
+           options:
+              syslog-address: "udp://10.10.80.231:514"
+              syslog-format: "rfc3164"
+              tag: "Docker"
+
+
+	  
